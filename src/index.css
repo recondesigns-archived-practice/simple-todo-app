@@ -7,6 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+p {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
