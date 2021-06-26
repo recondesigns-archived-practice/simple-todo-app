@@ -1,10 +1,11 @@
 import React from 'react'
 
+import HomePage from './pages/Home'
+
 export default function App() {
   return (
     <>
-      <h1>{'Simple Todo App'}</h1>
-      <p>{'Subttile line here'}</p>
+      <HomePage />
     </>
   )
 }
