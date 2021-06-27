@@ -6,9 +6,9 @@ import SignupPage from './pages/Signup'
 import DashboardPage from './pages/Dashboard'
 
 export default function App() {
-  const [currentUser] = useContext(AuthContext)
-  console.log(currentUser)
-  
+  // const [currentUser] = useContext(AuthContext)
+  // console.log(currentUser)
+
   return (
     <>
       <Switch>

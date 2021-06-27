@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { auth } from '../base'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -102,11 +103,28 @@ const InputWrapper = styled.div`
 `
 
 export default function SignupPage() {
+    const [name, setName] = useState(null)
+    const [email, setEmail] = useState(null)
+    const [pass, setPass] = useState(null)
     let history = useHistory()
 
-    function handleHome() {
-        history.push('/')
+    function changeRoute(historyMethod, path) {
+        historyMethod.push(path)
     }
+
+    function handleOnChange(e, setter) {
+        const { value } = e.target
+        setter(() => value)
+    }
+
+    function handleSignup() {
+        auth.createUserWithEmailAndPassword(email, pass)
+            .then(() => console.log(`User has been created for ${email}.`))
+            .catch((error) => console.log(error))
+    }
+
+    // console.log(555, name, email, pass)
+
 
     return (
         <Container>
@@ -119,22 +137,25 @@ export default function SignupPage() {
                     <Input 
                         type={'text'} 
                         placeholder={'name'} 
+                        onChange={(e) => handleOnChange(e, setName)}
                     />
                 </InputWrapper>
                 <InputWrapper>
                     <Input 
                         type={'email'} 
                         placeholder={'email'} 
+                        onChange={(e) => handleOnChange(e, setEmail)}
                     />
                 </InputWrapper>
                 <InputWrapper>
                     <Input 
                         type={'password'} 
                         placeholder={'password'} 
+                        onChange={(e) => handleOnChange(e, setPass)}
                     />
                 </InputWrapper>
-                <PrimaryButton>{'Sign up'}</PrimaryButton>
-                <SecondaryButton onClick={() => handleHome()}>{'Home'}</SecondaryButton>
+                <PrimaryButton onClick={() => handleSignup()}>{'Sign up'}</PrimaryButton>
+                <SecondaryButton onClick={() => changeRoute(history, '/')}>{'Home'}</SecondaryButton>
             </Wrapper>
         </Container>
     )

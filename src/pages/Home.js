@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { auth } from '../base'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -102,11 +103,26 @@ const InputWrapper = styled.div`
 `
 
 export default function HomePage() {
+    const [email, setEmail] = useState(null)
+    const [pass, setPass] = useState(null)
     let history = useHistory()
 
-    function handleSignup() {
-        history.push('/signup')
+    function logIn() {
+        auth.signInWithEmailAndPassword(email, pass)
+            .then(() => console.log(`User has been logged in.`))
+            .catch((error) => console.log(error))
     }
+
+    function changeRoute(historyMethod, path) {
+        historyMethod.push(path)
+    }
+
+    function handleOnChange(e, setter) {
+        const { value } = e.target
+        setter(() => value)
+    }
+
+    // console.log(email, pass)
 
     return (
         <Container>
@@ -119,16 +135,18 @@ export default function HomePage() {
                     <Input 
                         type={'email'} 
                         placeholder={'name@email.com'} 
+                        onChange={(e) => handleOnChange(e, setEmail)}
                     />
                 </InputWrapper>
                 <InputWrapper>
                     <Input 
                         type={'password'} 
                         placeholder={'password'} 
+                        onChange={(e) => handleOnChange(e, setPass)}
                     />
                 </InputWrapper>
-                <PrimaryButton>{'Log in'}</PrimaryButton>
-                <SecondaryButton onClick={() => handleSignup()}>{'Sign up'}</SecondaryButton>
+                <PrimaryButton onClick={() => logIn()}>{'Log in'}</PrimaryButton>
+                <SecondaryButton onClick={() => changeRoute(history, '/signup')}>{'Sign up'}</SecondaryButton>
             </Wrapper>
         </Container>
     )
