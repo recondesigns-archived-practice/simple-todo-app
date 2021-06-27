@@ -49,7 +49,7 @@ const Input = styled.input`
     color: #414141;
     border-radius: 4px;
     border: none;
-    outline: none;
+    // outline: none;
     // border: 1px solid #414141;
 `
 
