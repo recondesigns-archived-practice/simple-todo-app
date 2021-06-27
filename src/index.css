@@ -7,6 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, p {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
 /* h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
