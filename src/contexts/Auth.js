@@ -9,7 +9,9 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             if (user) {
-                console.log(user)
+                const { displayName, email, uid } = user
+                const userObj = { displayname: displayName, email: email, id: uid }
+                setCurrentUser(userObj)
             } else {
                 console.log(`No users loggged in.`)
             }

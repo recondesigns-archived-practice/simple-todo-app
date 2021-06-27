@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { AuthContext } from '../contexts/Auth'
 import { auth } from '../base'
 
 const Page = styled.div`
@@ -51,6 +52,10 @@ const SecondaryButton = styled.button`
 `
 
 export default function DashboardPage() {
+    const [currentUser, setCurrentUser] = useContext(AuthContext)
+    if (currentUser) {
+        console.log(555, currentUser)
+    }
     let history = useHistory()
 
     function changeRoute(historyMethod, path) {
@@ -61,6 +66,7 @@ export default function DashboardPage() {
         auth.signOut()
             .then(() => console.log(`User has been signed out.`))
             .catch((error) => console.log(error))
+        setCurrentUser(null)
     }
 
     return (

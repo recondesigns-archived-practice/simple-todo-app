@@ -119,12 +119,16 @@ export default function SignupPage() {
 
     function handleSignup() {
         auth.createUserWithEmailAndPassword(email, pass)
-            .then(() => console.log(`User has been created for ${email}.`))
+            .then(() => {
+                console.log(`User has been created for ${email}.`)
+                auth.currentUser.updateProfile({
+                    displayName: name
+                })
+                    .then(() => console.log(`Update successful.`))
+                    .catch((error) => console.log(error))
+            })
             .catch((error) => console.log(error))
     }
-
-    // console.log(555, name, email, pass)
-
 
     return (
         <Container>
