@@ -4,8 +4,38 @@ import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../contexts/Auth'
 import { auth } from '../base'
 
-const Page = styled.div`
-    border: 4px solid lightcoral;
+const Container = styled.div`
+    box-sizing: border-box;
+    padding: 40px 20px 40px 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    // border: 2px solid lightcoral;
+`
+
+const Wrapper = styled.div`
+    width: 100%;
+    // border: 1px solid dodgerblue;
+`
+
+const Title = styled.h1`
+    margin-bottom: 4px;
+    // width: 280px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: #414141;
+    // border: 1px dashed green;
+`
+
+const Subtitle = styled.p`
+    // margin-bottom: 40px;
+    // width: 280px;
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    color: #414141;
+    // border: 1px dashed green;
 `
 
 const PrimaryButton = styled.button`
@@ -70,9 +100,15 @@ export default function DashboardPage() {
     }
 
     return (
-        <Page>
-            <PrimaryButton onClick={() => logOut()}>{'Log out'}</PrimaryButton>
-            <SecondaryButton onClick={() => changeRoute(history, '/')}>{'Home'}</SecondaryButton>
-        </Page>
+        <Container>
+            <Wrapper>
+                <Title>{`Welcome, ${'Username'}.`}</Title>
+                <Subtitle>{`Complete some tasks.`}</Subtitle>
+            </Wrapper>
+            <Wrapper>
+                <PrimaryButton onClick={() => logOut()}>{'Log out'}</PrimaryButton>
+                <SecondaryButton onClick={() => changeRoute(history, '/')}>{'Home'}</SecondaryButton>
+            </Wrapper>
+        </Container>
     )
 }
