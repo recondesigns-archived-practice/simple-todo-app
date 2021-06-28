@@ -1,12 +1,12 @@
 import firebase from 'firebase'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCanTy2Rgjq4H1VBIN9qE2pf234TuFFrzE",
-    authDomain: "simple-todo-app-bb9b5.firebaseapp.com",
-    projectId: "simple-todo-app-bb9b5",
-    storageBucket: "simple-todo-app-bb9b5.appspot.com",
-    messagingSenderId: "333735218033",
-    appId: "1:333735218033:web:cddd1b5e405a03a30704d0"
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID
 }
 
 firebase.initializeApp(firebaseConfig)
