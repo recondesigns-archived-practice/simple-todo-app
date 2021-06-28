@@ -61,26 +61,6 @@ const PrimaryButton = styled.button`
     }
 `
 
-const SecondaryButton = styled.button`
-    width: 100%;
-    // width: 280px;
-    height: 40px;
-    border: none;
-    // border: 1px solid #414141;
-    color: #414141;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 4px;
-    // text-transform: uppercase;
-    background: #FFFFFF;
-    cursor: pointer;
-
-    &:hover {
-        opacity: 0.6;
-    }
-`
-
 const UserLabel = styled.p`
     text-align: center;
     opacity: 0.4;
@@ -91,9 +71,9 @@ export default function DashboardPage() {
     const [currentUser] = useContext(AuthContext)
     let history = useHistory()
 
-    function changeRoute(historyMethod, path) {
-        historyMethod.push(path)
-    }
+    // function changeRoute(historyMethod, path) {
+    //     historyMethod.push(path)
+    // }
 
     function logOut() {
         auth.signOut()
@@ -116,7 +96,6 @@ export default function DashboardPage() {
             <Wrapper>
                 <PrimaryButton onClick={() => logOut()}>{'Log out'}</PrimaryButton>
                 <UserLabel>{currentUser.id}</UserLabel>
-                {/* <SecondaryButton onClick={() => changeRoute(history, '/')}>{'Home'}</SecondaryButton> */}
             </Wrapper>
         </Container>
     )
