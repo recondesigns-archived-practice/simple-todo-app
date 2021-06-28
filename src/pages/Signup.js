@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
-import { auth, store  } from '../base'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -103,39 +102,19 @@ const InputWrapper = styled.div`
 `
 
 export default function SignupPage() {
-    const [name, setName] = useState(null)
-    const [email, setEmail] = useState(null)
-    const [pass, setPass] = useState(null)
+    // const [name, setName] = useState(null)
+    // const [email, setEmail] = useState(null)
+    // const [pass, setPass] = useState(null)
     let history = useHistory()
 
     function changeRoute(historyMethod, path) {
         historyMethod.push(path)
     }
 
-    function handleOnChange(e, setter) {
-        const { value } = e.target
-        setter(() => value)
-    }
-
-    function handleSignup() {
-        auth.createUserWithEmailAndPassword(email, pass)
-            .then((user) => {
-                const { uid } = user.user
-                console.log(555, uid)
-                auth.currentUser.updateProfile({
-                    displayName: name
-                })
-                    .then(() => console.log(`Update successful.`))
-                    .catch((error) => console.log(error))
-
-                store.collection('users').doc(uid).set({
-                    taskscompleted: 0
-                })
-                    .then(() => console.log(`Document successfully written.`))
-                    .catch((error) => console.log(error))
-            })
-            .catch((error) => console.log(error))
-    }
+    // function handleOnChange(e, setter) {
+    //     const { value } = e.target
+    //     setter(() => value)
+    // }
 
     return (
         <Container>
@@ -148,24 +127,24 @@ export default function SignupPage() {
                     <Input 
                         type={'text'} 
                         placeholder={'name'} 
-                        onChange={(e) => handleOnChange(e, setName)}
+                        // onChange={(e) => handleOnChange(e, setName)}
                     />
                 </InputWrapper>
                 <InputWrapper>
                     <Input 
                         type={'email'} 
                         placeholder={'email'} 
-                        onChange={(e) => handleOnChange(e, setEmail)}
+                        // onChange={(e) => handleOnChange(e, setEmail)}
                     />
                 </InputWrapper>
                 <InputWrapper>
                     <Input 
                         type={'password'} 
                         placeholder={'password'} 
-                        onChange={(e) => handleOnChange(e, setPass)}
+                        // onChange={(e) => handleOnChange(e, setPass)}
                     />
                 </InputWrapper>
-                <PrimaryButton onClick={() => handleSignup()}>{'Sign up'}</PrimaryButton>
+                <PrimaryButton>{'Sign up'}</PrimaryButton>
                 <SecondaryButton onClick={() => changeRoute(history, '/')}>{'Home'}</SecondaryButton>
             </Wrapper>
         </Container>
