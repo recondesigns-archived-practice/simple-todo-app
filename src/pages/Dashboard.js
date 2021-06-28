@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { AuthContext } from '../contexts/Auth'
+import { auth } from '../base'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -79,23 +81,42 @@ const SecondaryButton = styled.button`
     }
 `
 
+const UserLabel = styled.p`
+    text-align: center;
+    opacity: 0.4;
+    // border: 1px dashed green;
+`
+
 export default function DashboardPage() {
-  
+    const [currentUser] = useContext(AuthContext)
     let history = useHistory()
 
     function changeRoute(historyMethod, path) {
         historyMethod.push(path)
     }
 
+    function logOut() {
+        auth.signOut()
+            .then(() => console.log(`User has been signed out.`))
+            .catch((error) => console.log(error))
+        
+        history.push('/')
+    }
+
+    if (currentUser) {
+        console.log(999, currentUser)
+    }
+
     return (
         <Container>
             <Wrapper>
-                <Title>{`Welcome, ${'Username'}.`}</Title>
-                <Subtitle>{`Complete some tasks.`}</Subtitle>
+                <Title>{`Welcome back.`}</Title>
+                <Subtitle>{`You have ${currentUser.tasks.length} tasks to complete.`}</Subtitle>
             </Wrapper>
             <Wrapper>
-                <PrimaryButton>{'Log out'}</PrimaryButton>
-                <SecondaryButton onClick={() => changeRoute(history, '/')}>{'Home'}</SecondaryButton>
+                <PrimaryButton onClick={() => logOut()}>{'Log out'}</PrimaryButton>
+                <UserLabel>{currentUser.id}</UserLabel>
+                {/* <SecondaryButton onClick={() => changeRoute(history, '/')}>{'Home'}</SecondaryButton> */}
             </Wrapper>
         </Container>
     )
