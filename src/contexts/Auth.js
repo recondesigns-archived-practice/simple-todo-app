@@ -13,7 +13,6 @@ export function AuthProvider({ children }) {
 
                 let userDocRef = firestoreDb.collection('data').doc(uid)
                 userDocRef.onSnapshot((doc) => {
-                    console.log(doc.data())
                     setCurrentUser({...doc.data()})
                 })
             }

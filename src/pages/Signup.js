@@ -117,8 +117,6 @@ export default function SignupPage() {
     }
 
     function handleLogin() {
-        console.log(`Login fired.`)
-
         auth.createUserWithEmailAndPassword(email, pass)
             .then((user) => {
                 const { uid } = user.user

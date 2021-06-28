@@ -134,7 +134,7 @@ export default function DashboardPage() {
 
     function logOut() {
         auth.signOut()
-            .then(() => console.log(`User has been signed out.`))
+            .then()
             .catch((error) => console.log(error))
         
         changeRoute(history, '/')
@@ -158,7 +158,7 @@ export default function DashboardPage() {
 
         userDocRef.update({
             tasks: [...tasks, task(newTask, false)]
-        }).then(() => console.log('Document successfully updated.')).catch((error) => console.log(error))
+        }).then().catch((error) => console.log(error))
 
         setNewTask(null)
     }
