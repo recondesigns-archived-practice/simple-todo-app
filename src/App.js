@@ -7,9 +7,6 @@ import DashboardPage from './pages/Dashboard'
 
 export default function App() {
   const [currentUser] = useContext(AuthContext)
-  if (currentUser) {
-    console.log(2222, currentUser)
-  }
 
   return (
     <>

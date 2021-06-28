@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
-import { auth } from '../base'
+import { auth, store  } from '../base'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -119,12 +119,19 @@ export default function SignupPage() {
 
     function handleSignup() {
         auth.createUserWithEmailAndPassword(email, pass)
-            .then(() => {
-                console.log(`User has been created for ${email}.`)
+            .then((user) => {
+                const { uid } = user.user
+                console.log(555, uid)
                 auth.currentUser.updateProfile({
                     displayName: name
                 })
                     .then(() => console.log(`Update successful.`))
+                    .catch((error) => console.log(error))
+
+                store.collection('users').doc(uid).set({
+                    taskscompleted: 0
+                })
+                    .then(() => console.log(`Document successfully written.`))
                     .catch((error) => console.log(error))
             })
             .catch((error) => console.log(error))
