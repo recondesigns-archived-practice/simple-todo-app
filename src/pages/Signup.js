@@ -103,7 +103,6 @@ const InputWrapper = styled.div`
 `
 
 export default function SignupPage() {
-    // const [name, setName] = useState(null)
     const [email, setEmail] = useState(null)
     const [pass, setPass] = useState(null)
     let history = useHistory()
@@ -141,13 +140,6 @@ export default function SignupPage() {
                 <Subtitle>{`Please complete sign up.`}</Subtitle>
             </Wrapper>
             <Wrapper>
-                <InputWrapper>
-                    <Input 
-                        type={'text'} 
-                        placeholder={'name'} 
-                        // onChange={(e) => handleOnChange(e, setName)}
-                    />
-                </InputWrapper>
                 <InputWrapper>
                     <Input 
                         type={'email'} 
