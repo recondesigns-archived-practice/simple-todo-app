@@ -33,14 +33,6 @@ const FormWrapper = styled.div`
     // border: 1px solid dodgerblue;
 `
 
-const ButtonWrapper = styled.div`
-    position: absolute;
-    bottom: 20px;
-    left: calc(50% - 280px/2);
-    width: 280px;
-    // border: 1px solid dodgerblue;
-`
-
 const Title = styled.h1`
     margin-bottom: 4px;
     font-family: 'Montserrat', sans-serif;
@@ -109,12 +101,6 @@ const PrimaryButton = styled.button`
     &:hover {
         opacity: 0.8;
     }
-`
-
-const UserLabel = styled.p`
-    text-align: center;
-    opacity: 0.4;
-    // border: 1px dashed green;
 `
 
 export default function DashboardPage() {
