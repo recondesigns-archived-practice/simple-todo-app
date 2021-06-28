@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { auth } from '../base'
 
 const Container = styled.div`
+    position: relative;
     box-sizing: border-box;
     padding: 40px 20px 40px 20px;
     height: 100vh;
@@ -11,7 +12,13 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    // border: 2px solid lightcoral;
+    border: 2px solid lightcoral;
+
+    @media (min-width: 400px) {
+        max-width: 400px;
+        left: calc(50% - 400px/2);
+        // width: 400px;
+    }
 `
 
 const Wrapper = styled.div`

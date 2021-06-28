@@ -14,6 +14,12 @@ const Container = styled.div`
     // justify-content: space-between;
     align-items: center;
     // border: 2px solid lightcoral;
+
+    @media (min-width: 400px) {
+        max-width: 400px;
+        left: calc(50% - 400px/2);
+        // width: 400px;
+    }
 `
 
 const HeadingWrapper = styled.div`
@@ -180,6 +186,7 @@ export default function DashboardPage() {
                 </InputWrapper>
                 <FormButton onClick={() => addTask()}>{'Add task'}</FormButton>
             </FormWrapper>
+
         
             <ButtonWrapper>
                 <PrimaryButton onClick={() => logOut()}>{'Log out'}</PrimaryButton>
