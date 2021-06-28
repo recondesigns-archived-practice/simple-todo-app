@@ -12,7 +12,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid lightcoral;
+    // border: 2px solid lightcoral;
 
     @media (min-width: 400px) {
         max-width: 400px;
@@ -128,7 +128,7 @@ export default function SignupPage() {
             .then((user) => {
                 const { uid } = user.user
 
-                firestoreDb.collection('data').doc(uid).set({ id: uid, tasks: [{ title: 'title', isComplete: false }] })
+                firestoreDb.collection('data').doc(uid).set({ id: uid, tasks: [{ task: 'title', isComplete: false }] })
                     .then()
                     .catch((error) => console.log(error))
 

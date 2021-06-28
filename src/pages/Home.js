@@ -12,7 +12,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid lightcoral;
+    // border: 2px solid lightcoral;
 
     @media (min-width: 400px) {
         max-width: 400px;

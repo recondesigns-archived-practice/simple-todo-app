@@ -3,22 +3,21 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../contexts/Auth'
 import { auth, firestoreDb } from '../base'
+import List from '../components/List'
 
 const Container = styled.div`
     position: relative;
     box-sizing: border-box;
-    padding: 40px 20px 40px 20px;
+    padding: 40px 20px 0px 20px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     align-items: center;
     // border: 2px solid lightcoral;
 
     @media (min-width: 400px) {
         max-width: 400px;
         left: calc(50% - 400px/2);
-        // width: 400px;
     }
 `
 
@@ -29,6 +28,7 @@ const HeadingWrapper = styled.div`
 
 const FormWrapper = styled.div`
     margin-top: 40px;
+    margin-bottom: 20px;
     width: 100%;
     // border: 1px solid dodgerblue;
 `
@@ -43,7 +43,6 @@ const ButtonWrapper = styled.div`
 
 const Title = styled.h1`
     margin-bottom: 4px;
-    // width: 280px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     color: #414141;
@@ -51,8 +50,6 @@ const Title = styled.h1`
 `
 
 const Subtitle = styled.p`
-    // margin-bottom: 40px;
-    // width: 280px;
     font-family: 'Merriweather', serif;
     font-weight: 400;
     color: #414141;
@@ -66,9 +63,6 @@ const InputWrapper = styled.div`
 `
 
 const Input = styled.textarea`
-    // margin-bottom: 8px;
-    // padding-left: 12px;
-    // padding-right: 12px;
     box-sizing: border-box;
     width: 100%;
     // width: 280px;
@@ -79,7 +73,6 @@ const Input = styled.textarea`
     color: #414141;
     border-radius: 4px;
     border: none;
-    // outline: none;
     // border: 1px solid #414141;
 `
 
@@ -92,7 +85,6 @@ const FormButton = styled.button`
     font-weight: bold;
     color: #FFFFFF;
     border: none;
-    // height: 40px;
 
     &:hover {
         opacity: 0.8;
@@ -100,20 +92,16 @@ const FormButton = styled.button`
 `
 
 const PrimaryButton = styled.button`
-    margin-top: 0px;
-    // margin-bottom: 32px;
+    margin-top: 8px;
     width: 100%;
-    // width: 280px;
     height: 40px;
     border: none;
     color: dodgerblue;
-    // color: #FFFFFF;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: bold;
     border-radius: 4px;
     text-transform: uppercase;
-    // background: #414141;
     background: none;
     cursor: pointer;
     // border: 1px solid red;
@@ -187,11 +175,9 @@ export default function DashboardPage() {
                 <FormButton onClick={() => addTask()}>{'Add task'}</FormButton>
             </FormWrapper>
 
+            <List listItems={currentUser.tasks} />
         
-            <ButtonWrapper>
-                <PrimaryButton onClick={() => logOut()}>{'Log out'}</PrimaryButton>
-                <UserLabel>{currentUser.id}</UserLabel>
-            </ButtonWrapper>
+            <PrimaryButton onClick={() => logOut()}>{'Log out'}</PrimaryButton>
         </Container>
     )
 }
