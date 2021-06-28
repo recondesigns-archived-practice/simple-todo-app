@@ -12,13 +12,10 @@ export function AuthProvider({ children }) {
                 const { uid } = user
 
                 let userDocRef = firestoreDb.collection('data').doc(uid)
-                userDocRef.get().then((doc) => {
-                    if (doc.exists) {
-                        setCurrentUser({...doc.data()})
-                    } else {
-                        console.log('No such document.')
-                    }
-                }).catch((error) => console.log(error))
+                userDocRef.onSnapshot((doc) => {
+                    console.log(doc.data())
+                    setCurrentUser({...doc.data()})
+                })
             }
         })
     },[])

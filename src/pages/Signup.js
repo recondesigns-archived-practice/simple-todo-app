@@ -123,14 +123,13 @@ export default function SignupPage() {
             .then((user) => {
                 const { uid } = user.user
 
-                firestoreDb.collection('data').doc(uid).set({ id: uid, tasks: [] })
+                firestoreDb.collection('data').doc(uid).set({ id: uid, tasks: [{ title: 'title', isComplete: false }] })
                     .then()
                     .catch((error) => console.log(error))
 
                 history.push('/dashboard')
             })
             .catch((error) => console.log(error))
-
     }
 
     return (
